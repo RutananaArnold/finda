@@ -83,9 +83,7 @@ class _ImageSliderMobState extends State<ImageSliderMob> {
           child: Center(
               child: Text(
             quotes[currentIndex],
-            style: TextStyle(
-                fontSize: 20,
-                color: Colors.black),
+            style: TextStyle(fontSize: 20, color: Colors.white),
           )),
         ),
         AspectRatio(
