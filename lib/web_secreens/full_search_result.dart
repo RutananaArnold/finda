@@ -22,7 +22,7 @@ class _FullSearchResultState extends State<FullSearchResult> {
         'image-html',
         (int viewId) => ImageElement()
           ..src =
-              "http://" + apiUrl + "/docImages/" + "${widget.searchpost.pic}"
+              "https://findabackend.herokuapp.com/public/docImages/" + "${widget.searchpost.pic}"
           ..style.border = 'none');
 
     return Scaffold(

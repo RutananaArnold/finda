@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:finda/components/detail_fields.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:http/http.dart' as http;
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 
 import '../constant.dart';
 
@@ -560,15 +560,16 @@ class _SearchingPointState extends State<SearchingPoint> {
       "tel": phone,
     };
 
+    print(data);
     var jsonResponse;
     var response = await http.post(
-      Uri.parse("http://" + apiUrl + "/api/search/item"),
+      Uri.parse("https://findabackend.herokuapp.com/public/api/search/item"),
       body: jsonEncode(data),
       headers: _setHeaders(),
     );
-       
+
     print(response.statusCode);
-    
+
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
       if (jsonResponse != null) {

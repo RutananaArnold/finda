@@ -11,7 +11,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:finda/components/rounded_button.dart';
 import 'package:finda/components/detail_fields.dart';
 import 'package:finda/components/mobile_bottom_bar.dart';
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -235,9 +235,16 @@ class _SubmitItemState extends State<SubmitItem> {
                       kIsWeb
                           ? Image.memory(
                               _selectedFile,
-                              fit: BoxFit.fill,
+                              fit: BoxFit.fitHeight,
+                              height: 250,
+                              width: 200,
                             )
-                          : Image.memory(_selectedFile),
+                          : Image.memory(
+                              _selectedFile,
+                              fit: BoxFit.fitHeight,
+                              height: 250,
+                              width: 200,
+                            ),
                     SizedBox(
                       height: 5,
                     ),
@@ -626,7 +633,7 @@ class _SubmitItemState extends State<SubmitItem> {
     print(_selectedFile);
 
     var request = http.MultipartRequest(
-        'POST', Uri.parse("http://" + apiUrl + "/api/submit/file"));
+        'POST', Uri.parse("https://findabackend.herokuapp.com/public/api/submit/file"));
     request.fields.addAll({
       "selecteditem": selecteditem,
       "docfirstname": docfirstname,

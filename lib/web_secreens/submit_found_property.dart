@@ -10,7 +10,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:finda/components/rounded_button.dart';
 import 'package:finda/components/bottom_bar.dart';
 import 'package:finda/components/detail_fields.dart';
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -191,7 +191,7 @@ class _LostPropertyState extends State<LostProperty> {
         padding: EdgeInsets.fromLTRB(10, 5, 18, 0),
         width: width,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             DetailField(
               label1: "Gender *",
@@ -216,32 +216,36 @@ class _LostPropertyState extends State<LostProperty> {
                 border: Border.all(color: Colors.black87),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.upload_file),
-                      iconSize: 28,
-                      tooltip: "Attach Image of the item",
-                      onPressed: startWebFilePicker,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    if (_selectedFile != null)
-                      kIsWeb
-                          ? Image.memory(
-                              _selectedFile,
-                              fit: BoxFit.fill,
-                            )
-                          : Image.memory(_selectedFile),
-                    SizedBox(
-                      height: 5,
-                    ),
-                  ],
-                ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.upload_file),
+                    iconSize: 28,
+                    tooltip: "Attach Image of the item",
+                    onPressed: startWebFilePicker,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  if (_selectedFile != null)
+                    kIsWeb
+                        ? Image.memory(
+                            _selectedFile,
+                            fit: BoxFit.fitHeight,
+                            height: 250,
+                            width: 200,
+                          )
+                        : Image.memory(
+                            _selectedFile,
+                            fit: BoxFit.fitHeight,
+                            height: 250,
+                            width: 200,
+                          ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                ],
               ),
             ),
             SizedBox(
@@ -454,70 +458,72 @@ class _LostPropertyState extends State<LostProperty> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Column(
+      body:
+          Column(
+            children: [
+              Expanded(
+                child:
+          ListView(
         children: [
-          Expanded(
-            child: ListView(
-              children: [
-                SizedBox(height: 10),
-                Container(
-                  color: Colors.white.withOpacity(0.6),
-                  width: size.width,
-                  height: size.height * 0.6,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: lostInfo(
-                      size.width / 2,
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white.withOpacity(0.6),
-                  width: size.width,
-                  height: size.height,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: lostDetails(
-                      size.width / 2,
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white.withOpacity(0.6),
-                  width: size.width,
-                  height: size.height * 0.3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: lostDetails2(
-                      size.width / 2,
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white.withOpacity(0.6),
-                  width: size.width,
-                  height: size.height * 0.6,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: lostDetails3(
-                      size.width / 2,
-                    ),
-                  ),
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      submitButton(),
-                    ]),
-                SizedBox(
-                  height: 10,
-                ),
-                BottomBar(),
-              ],
+          SizedBox(height: 10),
+          Container(
+            color: Colors.white.withOpacity(0.6),
+            width: size.width,
+            height: size.height * 0.6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: lostInfo(
+                size.width / 2,
+              ),
             ),
+          ),
+          Container(
+            color: Colors.white.withOpacity(0.6),
+            width: size.width,
+            height: size.height,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: lostDetails(
+                size.width / 2,
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.white.withOpacity(0.6),
+            width: size.width,
+            height: size.height * 0.3,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: lostDetails2(
+                size.width / 2,
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.white.withOpacity(0.6),
+            width: size.width,
+            height: size.height * 0.6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: lostDetails3(
+                size.width / 2,
+              ),
+            ),
+          ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                submitButton(),
+              ]),
+          SizedBox(
+            height: 10,
+          ),
+          BottomBar(),
+        ],
+      ),
           ),
         ],
       ),
@@ -651,7 +657,7 @@ class _LostPropertyState extends State<LostProperty> {
     print(_selectedFile);
 
     var request = http.MultipartRequest(
-        'POST', Uri.parse("http://" + apiUrl + "/api/submit/file"));
+        'POST', Uri.parse("https://findabackend.herokuapp.com/public/api/submit/file"));
     request.fields.addAll({
       "selecteditem": selecteditem,
       "docfirstname": docfirstname,

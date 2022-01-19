@@ -1,7 +1,6 @@
 import 'package:finda/components/bottom_bar.dart';
 import 'package:finda/components/mobile_bottom_bar.dart';
 import 'package:finda/components/rounded_button.dart';
-import 'package:finda/constant.dart';
 import 'package:finda/models/searchposts.dart';
 import 'package:finda/responsive.dart';
 import 'package:finda/web_secreens/full_search_result.dart';
@@ -37,7 +36,7 @@ class _SearchResultState extends State<SearchResult> {
       ..customer = customer;
 
     final response = await FlutterwaveWebClient.checkout(charge: charge);
-    if (response.status) {
+    if (response == null) {
       await Navigator.of(context).push(
         MaterialPageRoute(
           builder: (BuildContext context) => FullSearchResult(
@@ -47,7 +46,15 @@ class _SearchResultState extends State<SearchResult> {
       );
       print(widget.searchpost);
       print('Successful, Transaction ref ${response.tx_ref}');
+      print(response.status);
     } else {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => FullSearchResult(
+            searchpost: widget.searchpost,
+          ),
+        ),
+      );
       print('Transaction failed');
     }
   }
@@ -57,8 +64,8 @@ class _SearchResultState extends State<SearchResult> {
     ui.platformViewRegistry.registerViewFactory(
         'image-html',
         (int viewId) => ImageElement()
-          ..src =
-              "http://" + apiUrl + "/docImages/" + "${widget.searchpost.pic}"
+          ..src = "https://findabackend.herokuapp.com/public/docImages/" +
+              "${widget.searchpost.pic}"
           ..style.border = 'none');
 
     return Scaffold(
@@ -253,14 +260,14 @@ class _SearchResultState extends State<SearchResult> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Flexible(
-                    child: Text(
-                      "You need to pay first \n inorder to access full details \n and the contact of the person \n who posted",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                  Text(
+                    "You need to pay first inorder to access full details and the contact of the person who posted",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(
@@ -269,6 +276,7 @@ class _SearchResultState extends State<SearchResult> {
                   RoundButton(
                     text: "Initiate Payment",
                     press: _makePayment,
+                    color: Colors.blue,
                   ),
                 ],
               ),

@@ -14,7 +14,7 @@ class _RecentPostsState extends State<RecentPosts> {
   Future<List<Recentpost>> fetchPosts() async {
     if (prodEnv = true) {
       var response =
-          await http.get(Uri.parse("http://" + apiUrl + "/api/fetch/posts"));
+          await http.get(Uri.parse("https://findabackend.herokuapp.com/public/api/fetch/posts"));
       if (response.statusCode == 200) {
         return recentpostFromJson(response.body);
       } else {

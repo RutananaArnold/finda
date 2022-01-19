@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:finda/components/detail_fields.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:http/http.dart' as http;
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 
 class FoundProperty extends StatefulWidget {
   @override
@@ -583,7 +583,7 @@ class _FoundPropertyState extends State<FoundProperty> {
 
     var jsonResponse;
     var response = await http.post(
-      Uri.parse("http://" + apiUrl + "/api/search/item"),
+      Uri.parse("https://findabackend.herokuapp.com/public/api/search/item"),
       body: jsonEncode(data),
       headers: _setHeaders(),
     );

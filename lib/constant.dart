@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 bool prodEnv = true;
 // String apiUrl = "192.168.43.13:8000"; //my phone's IP
-String apiUrl = "192.168.42.248:8000";
+// String apiUrl = "10.10.148.65:8000";
+// http://" + apiUrl + "/api/submit/file
 // String apiUrl = "192.168.137.162:8000";
 // String apiUrl = "192.168.137.204:8000";
 

@@ -188,7 +188,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                ImageSlider(),
+                // ImageSlider(),
                 Container(
                   color: Colors.white.withOpacity(0.6),
                   width: size.width,
