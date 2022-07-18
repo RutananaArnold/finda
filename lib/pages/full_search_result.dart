@@ -2,10 +2,8 @@ import 'package:finda/components/bottom_bar.dart';
 import 'package:finda/components/mobile_bottom_bar.dart';
 import 'package:finda/constant.dart';
 import 'package:finda/responsive.dart';
-import 'package:finda/web_secreens/desktop..dart';
 import 'package:flutter/material.dart';
 import 'package:finda/models/searchposts.dart';
-import 'dart:html';
 import 'package:universal_ui/universal_ui.dart';
 
 class FullSearchResult extends StatefulWidget {
@@ -18,12 +16,12 @@ class FullSearchResult extends StatefulWidget {
 class _FullSearchResultState extends State<FullSearchResult> {
   @override
   Widget build(BuildContext context) {
-    ui.platformViewRegistry.registerViewFactory(
-        'image-html',
-        (int viewId) => ImageElement()
-          ..src =
-              "https://findabackend.herokuapp.com/public/docImages/" + "${widget.searchpost.pic}"
-          ..style.border = 'none');
+    // ui.platformViewRegistry.registerViewFactory(
+    //     'image-html',
+    //     (int viewId) => ImageElement()
+    //       ..src = "https://findabackend.herokuapp.com/public/docImages/" +
+    //           "${widget.searchpost.pic}"
+    //       ..style.border = 'none');
 
     return Scaffold(
       appBar: AppBar(
@@ -318,10 +316,11 @@ class _FullSearchResultState extends State<FullSearchResult> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => DesktopScreen(),
-                        fullscreenDialog: true),);
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //       builder: (BuildContext context) => DesktopScreen(),
+                //       fullscreenDialog: true),
+                // );
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(

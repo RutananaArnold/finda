@@ -1,13 +1,13 @@
 import 'dart:convert';
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:finda/components/mobile_bottom_bar.dart';
-import 'package:finda/components/rounded_button.dart';
-import 'package:finda/models/searchposts.dart';
-import 'package:finda/web_secreens/search_result.dart';
+import '../components/mobile_bottom_bar.dart';
+import '../components/rounded_button.dart';
+import '../models/searchposts.dart';
+import '../pages/search_result.dart';
 import 'package:flutter/material.dart';
-import 'package:finda/components/detail_fields.dart';
+import '../components/detail_fields.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:http/http.dart' as http;
 import 'package:another_flushbar/flushbar.dart';

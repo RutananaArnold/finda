@@ -1,9 +1,8 @@
 import 'package:finda/responsive.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'mobile_screens/mobile.dart';
-import 'web_secreens/desktop..dart';
+// import 'web_secreens/desktop..dart';
 
 void main() {
   runApp(MyApp());
@@ -36,6 +35,8 @@ class _IndexState extends State<Index> {
   Widget build(BuildContext context) {
     return ResponsiveWidget.isMobileScreen(context)
         ? MobileScreen()
-        : DesktopScreen();
+        : Center(
+            child: Text('Desktop'),
+          );
   }
 }

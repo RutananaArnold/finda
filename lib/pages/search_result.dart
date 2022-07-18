@@ -1,12 +1,12 @@
-import 'package:finda/components/bottom_bar.dart';
-import 'package:finda/components/mobile_bottom_bar.dart';
-import 'package:finda/components/rounded_button.dart';
-import 'package:finda/models/searchposts.dart';
-import 'package:finda/responsive.dart';
-import 'package:finda/web_secreens/full_search_result.dart';
+import '../components/bottom_bar.dart';
+import '../components/mobile_bottom_bar.dart';
+import '../components/rounded_button.dart';
+import '../models/searchposts.dart';
+import '../responsive.dart';
+import '../pages/full_search_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwave_web_client/flutterwave_web_client.dart';
-import 'dart:html';
+// import 'dart:html';
 import 'package:universal_ui/universal_ui.dart';
 
 class SearchResult extends StatefulWidget {
@@ -61,12 +61,12 @@ class _SearchResultState extends State<SearchResult> {
 
   @override
   Widget build(BuildContext context) {
-    ui.platformViewRegistry.registerViewFactory(
-        'image-html',
-        (int viewId) => ImageElement()
-          ..src = "https://findabackend.herokuapp.com/public/docImages/" +
-              "${widget.searchpost.pic}"
-          ..style.border = 'none');
+    // ui.platformViewRegistry.registerViewFactory(
+    //     'image-html',
+    //     (int viewId) => ImageElement()
+    //       ..src = "https://findabackend.herokuapp.com/public/docImages/" +
+    //           "${widget.searchpost.pic}"
+    //       ..style.border = 'none');
 
     return Scaffold(
       appBar: AppBar(
